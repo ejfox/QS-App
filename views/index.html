@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ratchet template page</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <!-- Set a shorter title for iOS6 devices when saved to home screen -->
+    <meta name="apple-mobile-web-app-title" content="Ratchet">
+
+    <!-- Set Apple icons for when prototype is saved to home screen -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link rel="stylesheet" href="css/ratchet.css">
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.js"></script>
+
+    <!-- Intro paragraph styles. Delete once you start using this page -->
+    <style type="text/css">
+        .welcome {
+          line-height: 1.5;
+          color: #555;
+        }
+    </style>
+    
+    <!-- Bring in jQuery first, lots of other stuff depends on it -->
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>	
+
+	<!-- And underscore | http://documentcloud.github.com/underscore/	-->
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>	
+
+	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference 	-->
+	
+	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script> 		
+	
+<!--	<script src="js/retina.js" type="text/javascript" charset="utf-8"></script> -->
+	
+
+  </head>
+  <body>
+
+  <!-- Make sure all your bars are the first things in your <body> -->
+  <header class="bar-title">
+      <h1 class="title">{{ title }}</h1>
+      <a class="button" href="#">
+          Done
+        </a>
+  </header>
+
+  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+  <div class="content">
+    <div class="content-padded">
+      <p class="welcome">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <form action="/newevent" method="get" accept-charset="utf-8">
+    <ul class="list">
+    <li class="list-divider"><h4>Morning</h4></li>    
+    <li>
+        <h2><label for="wake_time">Wake Time</label></h2>
+        <!-- <input type="text" name="wake_time" value="" id="wake_time"> -->
+        <input id="wake_time" type=time list=times>
+        
+        <datalist id="times">
+        <option label="Midnight">00:00</option>
+        <option>06:00</option>
+        <option label="Noon">12:00</option>
+        <option>18:00</option>
+        <datalist>​
+    </li>
+
+    <li>
+        <h2><label for="am-mood">Morning Mood</label></h2>
+        <input class="small-input" type="text" name="am-mood" value="" id="am-mood">
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>
+    </li>
+
+
+    <li class="component-example component-example-fullbleed">
+        <h2><label for="am-restedness">Restedness</label></h2>
+        
+        <input class="small-input" type="text" name="am-restedness" value="" id="am-restedness">
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>    
+
+        
+    </li>
+
+    <li>
+        <h2><label for="optimism">Optimism</label></h2>
+        <input type="text" name="optimism" value="" id="optimism">
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>        
+    </li>
+    
+    <li class="list-divider"><h4>Evening</h4></li>    
+
+    <li>
+    <h2><label for="meditated">Meditated</label></h2>
+    <div class="toggle">
+          <div class="toggle-handle"></div>
+    </div>
+    </li>
+
+    <li>
+    <h2><label for="showered">Showered</label></h2>
+    <div class="toggle">
+          <div class="toggle-handle"></div>
+    </div>    
+    </li>
+    
+    <li>
+    <h2><label for="videogames">Video Games</label></h2>
+    <div class="toggle">
+          <div class="toggle-handle"></div>
+    </div>
+    </li>
+
+    <li>
+    <h2><label for="exercised">Exercised</label></h2>
+    <div class="toggle">
+          <div class="toggle-handle"></div>
+    </div>
+    </li>
+
+    <li>
+    <h2><label for="orgasms">Orgasms</label></h2>
+    <input class="small-input" type="text" name="orgasms" value="" id="orgasms">
+    </li>
+
+    <!--
+    <li>
+    <input type="submit" name="submit" value="Submit" id="submit">
+    </li>
+    -->
+    
+    
+    </ul>
+    <a class="button-block">Quantify!</a>
+    
+    </form>
+    
+
+  </div>
+
+  </body>
+</html>

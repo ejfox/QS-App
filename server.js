@@ -2,10 +2,38 @@
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
+    , mustache = require('mustache')    
     , port = (process.env.PORT || 8081);
+
+var databaseUrl = "qstest"; // "username:password@example.com/mydb"
+var db = require("mongojs").connect(databaseUrl, ['qstest']);
+
+
+var tmpl = {
+    compile: function (source, options) {
+        if (typeof source == 'string') {
+            return function(options) {
+                options.locals = options.locals || {};
+                options.partials = options.partials || {};
+                if (options.body) // for express.js > v1.0
+                    locals.body = options.body;
+                return mustache.to_html(
+                    source, options.locals, options.partials);
+            };
+        } else {
+            return source;
+        }
+    },
+    render: function (template, options) {
+        template = this.compile(template, options);
+        return template(options);
+    }
+};
+
 
 //Setup Express
 var server = express.createServer();
+
 server.configure(function(){
     server.set('views', __dirname + '/views');
     server.set('view options', { layout: false });
@@ -14,6 +42,7 @@ server.configure(function(){
     server.use(express.session({ secret: "shhhhhhhhh!"}));
     server.use(connect.static(__dirname + '/static'));
     server.use(server.router);
+    server.register(".html", tmpl);    
 });
 
 //setup the errors
@@ -58,15 +87,57 @@ io.sockets.on('connection', function(socket){
 /////// ADD ALL YOUR ROUTES HERE  /////////
 
 server.get('/', function(req,res){
-  res.render('index.jade', {
+  res.render('index.html', {
     locals : { 
-              title : 'Your Page Title'
-             ,description: 'Your Page Description'
-             ,author: 'Your Name'
-             ,analyticssiteid: 'XXXXXXX' 
+              title : 'Quantify Yourself'
             }
   });
 });
+
+
+////////////// QS APP CODE
+
+
+server.get('/newevent', function(req,res){
+    console.log("new event");
+    
+    var qs = [];
+    
+    qs.wakeTime = req.query['waketime'],
+    qs.amMood = req.query['am-mood'],
+    qs.pmMood = req.query['pm-mood'],
+    qs.amRestedness = req.query['am-restedness'],
+    qs.optimism = req.query['optimism'],
+    qs.meditated = req.query['meditated'],
+    qs.showered = req.query['showered'],
+    qs.exerciseTime = req.query['exercise-time'],
+    qs.videoGamesPlayed = req.query['videogames'],
+    qs.orgasms = req.query['orgasms'];        
+    
+    console.log("qs", qs);    
+    
+    
+    db.qstest.save(qs)    
+
+    
+    
+    res.render("newevent.html", {
+            locals: {
+                eventadded: true,
+                title: "Event added!"
+            }
+    })
+});
+
+
+
+
+//////////////
+
+
+
+
+
 
 
 //A Route for Creating a 500 Error (Useful to keep around)
