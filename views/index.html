@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ratchet template page</title>
+    <title>QYS</title>
 
     <!-- Sets initial viewport load and disables zooming  -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -22,8 +22,7 @@
     <!-- Include the compiled Ratchet CSS -->
     <link rel="stylesheet" href="css/ratchet.css">
 
-    <!-- Include the compiled Ratchet JS -->
-    <script src="js/ratchet.js"></script>
+
 
     <!-- Intro paragraph styles. Delete once you start using this page -->
     <style type="text/css">
@@ -52,7 +51,7 @@
   <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
       <h1 class="title">{{ title }}</h1>
-      <a class="button" href="#">
+      <a class="button submit-quantify" href="#">
           Done
         </a>
   </header>
@@ -60,16 +59,18 @@
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content">
     <div class="content-padded">
-      <p class="welcome">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="welcome"><h2>Today's date!</h2>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 
-    <form action="/newevent" method="get" accept-charset="utf-8">
+    <form id="qs-form" action="/newevent" method="get" accept-charset="utf-8">
     <ul class="list">
     <li class="list-divider"><h4>Morning</h4></li>    
     <li>
         <h2><label for="wake_time">Wake Time</label></h2>
         <!-- <input type="text" name="wake_time" value="" id="wake_time"> -->
-        <input id="wake_time" type=time list=times>
+        <input type="hidden" name="wake_time" value="" id="wake_time">
+        <input id="wake_time_chooser" type="time" list="times" form="wake_time" class="small-input" style="height: 50px;">
         
         <datalist id="times">
         <option label="Midnight">00:00</option>
@@ -97,45 +98,36 @@
 
     <li>
         <h2><label for="optimism">Optimism</label></h2>
-        <input type="text" name="optimism" value="" id="optimism">
+        <input class="small-input" type="text" name="optimism" value="" id="optimism">
         <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>        
     </li>
     
     <li class="list-divider"><h4>Evening</h4></li>    
 
     <li>
-    <h2><label for="meditated">Meditated</label></h2>
-    <div class="toggle">
-          <div class="toggle-handle"></div>
-    </div>
+         <h2><label>Meditated <input type="checkbox" id="meditated" name="meditated"/></label></h2>
     </li>
 
     <li>
-    <h2><label for="showered">Showered</label></h2>
-    <div class="toggle">
-          <div class="toggle-handle"></div>
-    </div>    
+        <h2><label>Showered <input type="checkbox" id="showered" name="showered"/></label></h2>
     </li>
     
     <li>
-    <h2><label for="videogames">Video Games</label></h2>
-    <div class="toggle">
-          <div class="toggle-handle"></div>
-    </div>
+        <h2><label>Video games <input type="checkbox" id="video-games" name="video-games"/></label></h2>
     </li>
 
     <li>
-    <h2><label for="exercised">Exercised</label></h2>
-    <div class="toggle">
-          <div class="toggle-handle"></div>
-    </div>
+        <h2><label>Exercise <input type="checkbox" id="exercise" name="exercise"/></label></h2>
     </li>
 
+    <!--
     <li>
     <h2><label for="orgasms">Orgasms</label></h2>
     <input class="small-input" type="text" name="orgasms" value="" id="orgasms">
     </li>
-
+    -->
+    
+    
     <!--
     <li>
     <input type="submit" name="submit" value="Submit" id="submit">
@@ -144,12 +136,28 @@
     
     
     </ul>
-    <a class="button-block">Quantify!</a>
+    <a class="button-block submit-quantify">Quantify!</a>
     
     </form>
-    
+
 
   </div>
 
   </body>
+  
+<!-- Include the compiled Ratchet JS -->
+<script src="js/ratchet.js"></script>  
+  
+<script type="text/javascript" charset="utf-8">
+
+$(document).ready(function(){
+    $("#qs-form").prepend($('<input type="hidden" name="date" value="'+new Date().toDateString()+'" id="date">'))
+    $("#qs-form").prepend($('<input type="hidden" name="user" value="user1" id="user">'))
+    
+})
+$(".submit-quantify").click(function(){
+    $("#qs-form").submit();
+})
+</script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </html>

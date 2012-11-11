@@ -100,33 +100,47 @@ server.get('/', function(req,res){
 
 server.get('/newevent', function(req,res){
     console.log("new event");
+    var qs = {};
     
-    var qs = [];
-    
-    qs.wakeTime = req.query['waketime'],
-    qs.amMood = req.query['am-mood'],
-    qs.pmMood = req.query['pm-mood'],
-    qs.amRestedness = req.query['am-restedness'],
-    qs.optimism = req.query['optimism'],
-    qs.meditated = req.query['meditated'],
-    qs.showered = req.query['showered'],
-    qs.exerciseTime = req.query['exercise-time'],
-    qs.videoGamesPlayed = req.query['videogames'],
-    qs.orgasms = req.query['orgasms'];        
+    qs.date             = req.query['date'],
+    qs.user             = req.query['user'],    
+    qs.wakeTime         = req.query['waketime'],
+    qs.amMood           = req.query['am-mood'],
+    qs.pmMood           = req.query['pm-mood'],
+    qs.amRestedness     = req.query['am-restedness'],
+    qs.optimism         = req.query['optimism'],
+    qs.meditated        = req.query['meditated'],
+    qs.showered         = req.query['showered'],
+    qs.exerciseTime     = req.query['exercise-time'],
+    qs.videoGamesPlayed = req.query['video-games'],
+    qs.orgasms          = req.query['orgasms'];        
     
     console.log("qs", qs);    
     
     
-    db.qstest.save(qs)    
+    db.qstest.save(qs, function(err, updated) {
+        if (err || !updated) console.log("Problem saving")
+        else {
+            console.log("Added user")
+            
+            db.qstest.find({user: "user1"}, function(err, cursor){
+                console.log("ALLLLL OF DA UPDAAAAATES", cursor)
+                
+                res.render("list.html", {
+                        locals: {
+                            eventadded: true,
+                            title: "Event added!",
+                            checkins: cursor
+                        }
+                })
+            })
+            
+        }
+    });
 
     
     
-    res.render("newevent.html", {
-            locals: {
-                eventadded: true,
-                title: "Event added!"
-            }
-    })
+
 });
 
 

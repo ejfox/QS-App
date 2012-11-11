@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>QYS</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <!-- Set a shorter title for iOS6 devices when saved to home screen -->
+    <meta name="apple-mobile-web-app-title" content="Ratchet">
+
+    <!-- Set Apple icons for when prototype is saved to home screen -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link rel="stylesheet" href="css/ratchet.css">
+
+
+
+    <!-- Intro paragraph styles. Delete once you start using this page -->
+    <style type="text/css">
+        .welcome {
+          line-height: 1.5;
+          color: #555;
+        }
+    </style>
+    
+    <!-- Bring in jQuery first, lots of other stuff depends on it -->
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>	
+
+	<!-- And underscore | http://documentcloud.github.com/underscore/	-->
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>	
+
+	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference 	-->
+	
+	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script> 		
+	
+<!--	<script src="js/retina.js" type="text/javascript" charset="utf-8"></script> -->
+	
+
+  </head>
+  <body>
+
+  <!-- Make sure all your bars are the first things in your <body> -->
+  <header class="bar-title">
+      <h1 class="title">{{ title }}</h1>
+      <a class="button" href="#">
+          Done
+        </a>
+  </header>
+
+  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+  <div class="content">
+    <div class="content-padded">
+      <p class="welcome">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<!--    
+    {{#checkins}}
+    <ul class="checkin">
+        <li>Date: {{ date }}</li>
+        <li>Wake: {{ wakeTime }}</li>
+        <li>amMood: {{ amMood }}</li>
+        <li>pmMood: {{ pmMood }}</li>
+        <li>amRestedness: {{ amRestedness }}</li>
+        <li>optimism: {{ optimism }}</li>
+        <li>meditated: {{ meditated }}</li>
+        <li>showered: {{ showered }}</li>
+        <li>exerciseTime: {{ exerciseTime }}</li>
+        <li>videoGamesPlayed: {{ videoGamesPlayed }}</li>
+    </ul>
+    {{/checkins}}
+-->
+
+    
+    <table border="0" cellspacing="5" cellpadding="5">
+        <tr>
+            <th>Date</th>
+            <th><img src="/images/type_icons/png/wakeTime.png" width="24" height="24" alt="WakeTime"></th>
+            <th><img src="/images/type_icons/png/amMood.png" width="24" height="24" alt="AmMood"></th>
+            <th><img src="/images/type_icons/png/pmMood.png" width="24" height="24" alt="PmMood"></th>
+            <th><img src="/images/type_icons/png/restedness.png" width="24" height="24" alt="Restedness"></th>
+            <th><img src="/images/type_icons/png/optimism.png" width="24" height="24" alt="Optimism"></th>
+            <th><img src="/images/type_icons/png/meditated.png" width="24" height="24" alt="Meditated"></th>
+            <th><img src="/images/type_icons/png/showered.png" width="24" height="24" alt="Showered"></th>
+            <th><img src="/images/type_icons/png/exercise.png" width="24" height="24" alt="Exercise"></th>
+            <th><img src="/images/type_icons/png/videoGames.png" width="24" height="24" alt="VideoGames"></th>
+        </tr>
+        {{#checkins}}
+        <tr class="checkin">
+            <td>{{ date }}</td>
+            <td>{{ wakeTime }}</td>
+            <td>{{ amMood }}</td>
+            <td>{{ pmMood }}</td>
+            <td>{{ amRestedness }}</td>
+            <td>{{ optimism }}</td>
+            <td>{{ meditated }}</td>
+            <td>{{ showered }}</td>
+            <td>{{ exerciseTime }}</td>
+            <td>{{ videoGamesPlayed }}</td>
+            <!-- <td>{{ orgasms }}</td> -->
+        </tr>
+        {{/checkins}}
+
+    </table>
+    </div>
+  </div>
+
+  </body>
+  
+<!-- Include the compiled Ratchet JS -->
+<script src="js/ratchet.js"></script>  
+  
+<script type="text/javascript" charset="utf-8">
+
+</script>
+</html>
