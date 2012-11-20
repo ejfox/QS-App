@@ -41,6 +41,8 @@
 	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference 	-->
 	
 	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script> 		
+
+	<script src="js/moment.js" type="text/javascript" charset="utf-8"></script> 		
 	
 <!--	<script src="js/retina.js" type="text/javascript" charset="utf-8"></script> -->
 	
@@ -51,7 +53,8 @@
   <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
       <h1 class="title">{{ title }}</h1>
-      <a class="button submit-quantify" href="#">
+      
+      <a class="button submit-quantify done-button" href="#">
           Done
         </a>
   </header>
@@ -69,15 +72,8 @@
     <li>
         <h2><label for="wake_time">Wake Time</label></h2>
         <!-- <input type="text" name="wake_time" value="" id="wake_time"> -->
-        <input type="hidden" name="wake_time" value="" id="wake_time">
-        <input id="wake_time_chooser" type="time" list="times" form="wake_time" class="small-input" style="height: 50px;">
-        
-        <datalist id="times">
-        <option label="Midnight">00:00</option>
-        <option>06:00</option>
-        <option label="Noon">12:00</option>
-        <option>18:00</option>
-        <datalist>​
+        <input type="hidden" name="waketime" value="" id="waketime">
+        <input id="wake_time_chooser" type="time" form="wake_time" class="small-input" onchange="$('#waketime').val($(this).val())">
     </li>
 
     <li>
@@ -117,7 +113,13 @@
     </li>
 
     <li>
-        <h2><label>Exercise <input type="checkbox" id="exercise" name="exercise"/></label></h2>
+        <h2><label>Exercised <input type="checkbox" id="exercised" name="exercised"/></label></h2>
+    </li>
+    
+    <li>
+        <h2><label for="pm-mood">Evening Mood</label></h2>
+        <input class="small-input" type="text" name="pm-mood" value="" id="pm-mood">
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>
     </li>
 
     <!--
@@ -152,7 +154,7 @@
 
 $(document).ready(function(){
     $("#qs-form").prepend($('<input type="hidden" name="date" value="'+new Date().toDateString()+'" id="date">'))
-    $("#qs-form").prepend($('<input type="hidden" name="user" value="user1" id="user">'))
+    $("#qs-form").prepend($('<input type="hidden" name="user" value="user2" id="user">'))
     
 })
 $(".submit-quantify").click(function(){

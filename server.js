@@ -2,7 +2,9 @@
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
-    , mustache = require('mustache')    
+    , mustache = require('mustache') 
+    , moment = require('moment')   
+    , _ = require('underscore')
     , port = (process.env.PORT || 8081);
 
 var databaseUrl = "qstest"; // "username:password@example.com/mydb"
@@ -96,8 +98,6 @@ server.get('/', function(req,res){
 
 
 ////////////// QS APP CODE
-
-
 server.get('/newevent', function(req,res){
     console.log("new event");
     var qs = {};
@@ -111,9 +111,11 @@ server.get('/newevent', function(req,res){
     qs.optimism         = req.query['optimism'],
     qs.meditated        = req.query['meditated'],
     qs.showered         = req.query['showered'],
-    qs.exerciseTime     = req.query['exercise-time'],
+    qs.exercised     = req.query['exercised'],
     qs.videoGamesPlayed = req.query['video-games'],
-    qs.orgasms          = req.query['orgasms'];        
+    qs.orgasms          = req.query['orgasms'];      
+     
+         
     
     console.log("qs", qs);    
     
@@ -123,8 +125,24 @@ server.get('/newevent', function(req,res){
         else {
             console.log("Added user")
             
-            db.qstest.find({user: "user1"}, function(err, cursor){
-                console.log("ALLLLL OF DA UPDAAAAATES", cursor)
+            db.qstest.find({user: "user2"}, function(err, cursor){
+//                console.log("ALLLLL OF DA UPDAAAAATES", cursor)
+                
+                _.each(cursor, function(row){
+//                    row.date = moment(row.date).fromNow();
+                    row.date = moment(row.date).format("MMM D");
+                    
+                    console.log("row.wakeTime - before", row.wakeTime);
+                    
+                    if(moment(row.wakeTime)){
+                        row.wakeTime = moment(row.wakeTime, "HH:mm").format("h:mma");
+                    }
+                    
+                    console.log("row.wakeTime - after", row.wakeTime);
+                    
+                })
+                
+
                 
                 res.render("list.html", {
                         locals: {

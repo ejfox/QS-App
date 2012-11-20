@@ -305,9 +305,22 @@ a {
 		color: @darklinkcolor;
 	}
 }
+h1 {
+    text-align: center;
+    font-size: 62px;
+    line-height: 1.3em;
+    width: 100%;
+}
 
 th {
-    text-align: right;
+    text-align: center;
+}
+
+li input[type=checkbox] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 li {
@@ -317,15 +330,37 @@ li {
     width: 50%;
     text-align: center;
     margin-top: 24px;
+    margin-bottom: 48px;
 }
 
 .large, h2 {
 	color: darken(@fontcolor, 12%);	
-	font-size: 44px;
-	line-height: 48px;
+	font-size: 32px;
+	line-height: 38px;
 	font-weight: 800;
 	line-height: 1.5em;
+	text-align: center;
 }
+
+.button-block {
+    text-align: center;
+    width: 100%;
+    background-color: #CCC;
+    display: block;
+    height: 75px;
+    padding-top: 25px;
+}
+.done-button {
+    display: none;
+}
+
+table {
+    width: 100%;
+}
+td.on {
+    background-color: #9FE54C;
+}
+
 
 /* -------------- MY RATCHET STUFF -------------------------- */
 /* ---------------------------------------------------------- */
@@ -352,8 +387,9 @@ input {
 }
 
 .checkin td {
-    border-bottom: 1px solid black;
-    border-left: 1px dotted black;
+    padding: 4px 2px;
+    border-bottom: 1px solid #E8E8E8;
+    border-left: 1px solid #999;
     text-align: center;
 }
 table {
@@ -408,6 +444,13 @@ px      68    160    252    */
     li {
         width: 100%;
     }
+    
+    .checkin td {
+        padding: 1px 2px;
+        border-bottom: 1px solid #E8E8E8;
+        border-left: 1px solid #999;
+        text-align: center;
+    }
 	
 	
     /* Base styles
@@ -428,6 +471,10 @@ px      68    160    252    */
 
     h2 {
         text-align: center; 
+    }
+    
+    #wake_time_chooser {
+        height: 50px;
     }
 
     /* Universal link styling */
