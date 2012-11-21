@@ -162,6 +162,25 @@ server.get('/newevent', function(req,res){
 });
 
 
+server.get('/metric-history', function(req,res){
+    if(req.query['metric'] != null && req.query['metric'] != undefined) {
+        metric = req.query['metric'];
+    }
+
+    var results = db.qstest.find({user: req.query['user']}, function(error, result){	
+        
+        _.map(result, function(row){
+            
+            newresult.date = row.date;
+            newresult.metric = row[metric];
+            return newresult;
+        })
+//        res.set('Access-Control-Allow-Origin',"*")
+		console.log(">",error, result)		
+		res.send(result);
+	})
+})
+
 
 
 //////////////
