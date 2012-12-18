@@ -1,0 +1,11 @@
+# Quantify Yourself
+
+## /metric-history
+### /metric-history?user=1
+Shows each individual check-in for a user
+
+### /metric-history?user=1&metric=wakeTime
+Returns the dates and values for a single metric
+
+## Deploying on Dreamhost
+<http://respectthecode.tumblr.com/post/16115560558/node-js-on-dreamhost>

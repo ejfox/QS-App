@@ -8,7 +8,7 @@
   @media all and (-webkit-min-device-pixel-ratio : 1.5) {
     background-image: url(@at2x_path);
     background-size: @w @h;
-  }  
+  }
 }
 
 /*---------------------------------------------------
@@ -67,7 +67,7 @@
   -webkit-border-radius: @radius;
   -moz-border-radius: @radius;
   border-radius: @radius;
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
   -webkit-border-top-right-radius: @topright;
@@ -82,7 +82,7 @@
   border-bottom-right-radius: @bottomright;
   border-bottom-left-radius: @bottomleft;
   border-top-left-radius: @topleft;
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 .opacity(@opacity: 0.5) {
   -moz-opacity: @opacity;
@@ -177,12 +177,12 @@ pre {
 label, input[type=button], input[type=submit], button { cursor: pointer; }
 
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
-p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
-img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
-dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em,
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figure, figcaption, hgroup, 
+article, aside, canvas, details, figure, figcaption, hgroup,
 menu, footer, header, nav, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -197,13 +197,13 @@ a img {border: 0;}
 /*	Color variables
 	------------------	*/
 
-@fontcolor: #272727;
+@fontcolor: #505050;
 @bgcolor: #f7f7f7;
 /* Highlight color, when user selects text */
 @highlight: #b5bfcb;
 
 /* Link color, hover/visited will be generated from this */
-@linkcolor: #10206d;	
+@linkcolor: #10206d;
 
 /* Selection colours (easy to forget) */
 
@@ -214,7 +214,7 @@ img::-moz-selection	{background: transparent;}
 body {-webkit-tap-highlight-color: @highlight;}
 
 /*	Typography presets
-	------------------	
+	------------------
 
 .gigantic {
 	font-size: 116px;
@@ -232,14 +232,14 @@ body {-webkit-tap-highlight-color: @highlight;}
 }
 
 .bigger, h3 {
-	color: darken(@fontcolor, 10%);	
+	color: darken(@fontcolor, 10%);
 	font-size: 28px;
 	line-height: 1.5em;
 	font-weight: 800;
 }
 
 .big, h4 {
-	color: darken(@fontcolor, 7%);		
+	color: darken(@fontcolor, 7%);
 	font-size: 24px;
 	line-height: 30px;
 	font-weight: 700;
@@ -264,7 +264,7 @@ body {
 	line-height: 1.4em;
 }
 
-/*	Column class / mixins 
+/*	Column class / mixins
 	---------------------	*/
 
 .1-column { width:  68px;   }
@@ -289,6 +289,9 @@ body {
 	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 	margin-left: auto;
 	margin-right: auto;
+
+  .at2x('../images/bg.png', 4px, 4px);
+
 }
 a {
 	&:link{
@@ -311,16 +314,97 @@ h1 {
     line-height: 1.3em;
     width: 100%;
 }
+p {
+  padding: 4px 6px;
+}
+.content {
+  padding-top: 4px;
+  background-color: rgba(249,249,249,0.5);
+  border-radius: 4px;
+
+  .drop-shadow(0,-1px,9px,0.06);
+}
 
 th {
     text-align: center;
 }
+li input[type=time] {
+  font-family: "Helvetica Neue", Helvetica, Arial, san-serif;
+  font-size: 24px;
+  border: 1px solid white;
+  font-weight: bold;
+  padding: 8px 12px;
+}
+li input[type=range] {
+  -webkit-appearance: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 2px 0;
+  padding-top: 3px;
+  .inner-shadow(0, 1px, 3px, 0.2);
 
+  background: -moz-linear-gradient(top, rgba(249,249,249,0.02) 0%, rgba(255,255,255,0.94) 48%, rgba(155,155,155,0.98) 50%, rgba(205,205,205,1) 51%, rgba(255,255,255,0.98) 52%, rgba(234,234,234,0.02) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,249,249,0.02)), color-stop(48%,rgba(255,255,255,0.94)), color-stop(50%,rgba(155,155,155,0.98)), color-stop(51%,rgba(205,205,205,1)), color-stop(52%,rgba(255,255,255,0.98)), color-stop(100%,rgba(234,234,234,0.02))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(249,249,249,0.02) 0%,rgba(255,255,255,0.94) 48%,rgba(155,155,155,0.98) 50%,rgba(205,205,205,1) 51%,rgba(255,255,255,0.98) 52%,rgba(234,234,234,0.02) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(249,249,249,0.02) 0%,rgba(255,255,255,0.94) 48%,rgba(155,155,155,0.98) 50%,rgba(205,205,205,1) 51%,rgba(255,255,255,0.98) 52%,rgba(234,234,234,0.02) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(249,249,249,0.02) 0%,rgba(255,255,255,0.94) 48%,rgba(155,155,155,0.98) 50%,rgba(205,205,205,1) 51%,rgba(255,255,255,0.98) 52%,rgba(234,234,234,0.02) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(249,249,249,0.02) 0%,rgba(255,255,255,0.94) 48%,rgba(155,155,155,0.98) 50%,rgba(205,205,205,1) 51%,rgba(255,255,255,0.98) 52%,rgba(234,234,234,0.02) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05f9f9f9', endColorstr='#05eaeaea',GradientType=0 ); /* IE6-9 */
+
+  opacity: 0.32;
+
+  -webkit-transition:opacity .24s ease-in ;
+     -moz-transition:opacity .24s ease-in ;
+       -o-transition:opacity .24s ease-in ;
+          transition:opacity .24s ease-in ;
+  &:active, &:hover {
+    opacity: 1;
+  }
+}
+li input[type=text] {
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 4px;
+  height: auto;
+  padding: 12px 10px;
+  font-size: 42px;
+  text-align: center;
+
+  opacity: 0.3;
+
+  -webkit-transition:opacity .3s ease-in .04s;
+     -moz-transition:opacity .3s ease-in .04s;
+       -o-transition:opacity .3s ease-in .04s;
+          transition:opacity .3s ease-in .04s;
+  &:active, &:hover, &:focus {
+    opacity: 1;
+  }
+}
+label {
+  &:focus {
+    color: red;
+  }
+}
 li input[type=checkbox] {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
+
+    background-color: #ebebeb;
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(235, 235, 235)), to(rgb(150, 150, 150)));
+background-image: -webkit-linear-gradient(top, rgb(235, 235, 235), rgb(150, 150, 150));
+background-image: -moz-linear-gradient(top, rgb(235, 235, 235), rgb(150, 150, 150));
+background-image: -o-linear-gradient(top, rgb(235, 235, 235), rgb(150, 150, 150));
+background-image: -ms-linear-gradient(top, rgb(235, 235, 235), rgb(150, 150, 150));
+background-image: linear-gradient(top, rgb(235, 235, 235), rgb(150, 150, 150));
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#ebebeb', EndColorStr='#969696');
+
+
+    &:focus {
+      outline: 3px solid white;
+
+    }
+
 }
 
 li {
@@ -334,7 +418,7 @@ li {
 }
 
 .large, h2 {
-	color: darken(@fontcolor, 12%);	
+	color: darken(@fontcolor, 12%);
 	font-size: 32px;
 	line-height: 38px;
 	font-weight: 800;
@@ -353,6 +437,43 @@ li {
 .done-button {
     display: none;
 }
+
+@media only screen and (min-width: 767px) {
+    #time-switch {
+
+      position: fixed;
+      top:   12px;
+      left: 12px;
+      border-radius: 4px;
+      padding: 4px 2px;
+
+      border: 2px solid #ccc;
+      display: block;
+      width: 8em;
+
+      background-color: rgba(240,240,240,0.6);
+
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      font-size: 18px;
+      text-decoration: none;
+
+      opacity: 0.2;
+
+      -webkit-transition:opacity .3s ease-out ;
+         -moz-transition:opacity .3s ease-out ;
+           -o-transition:opacity .3s ease-out ;
+              transition:opacity .3s ease-out ;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+}
+
+
+
 
 table {
     width: 100%;
@@ -401,6 +522,24 @@ table {
 }
 
 
+svg {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*		Mobile Layout: 320px.
 		Gutters: 24px.
 		Outer margins: 34px.
@@ -410,13 +549,13 @@ cols    1     2      3
 px      68    160    252    */
 
 @media only screen and (max-width: 767px) {
-	
+
 	body {
 		width: 100%;
 		padding: 2px 0;
 		min-width: 320px;
 	}
-	
+
 	input[type=range] {
         width: 100%;
         -webkit-appearance: none !important;
@@ -439,7 +578,7 @@ px      68    160    252    */
         text-align: center;
         font-size: 20px;
     }
-    
+
     h2 {
         font-size: 18px;
         line-height: 1.2em;
@@ -447,15 +586,39 @@ px      68    160    252    */
     li {
         width: 100%;
     }
-    
+
+    li input[type=text] {
+      width: 100%;
+      border: 1px solid #999;
+      border-radius: 4px;
+      height: auto;
+      padding: 12px 10px;
+      font-size: 42px;
+      text-align: center;
+
+      opacity: 0.6;
+
+      -webkit-transition:opacity .3s ease-in .04s;
+      -moz-transition:opacity .3s ease-in .04s;
+      -o-transition:opacity .3s ease-in .04s;
+      transition:opacity .3s ease-in .04s;
+      &:active, &:hover, &:focus {
+        opacity: 1;
+      }
+    }
+
+    .number_picker {
+      display: none;
+    }
+
     .checkin td {
         padding: 1px 2px;
         border-bottom: 1px solid #E8E8E8;
         border-left: 1px solid #999;
         text-align: center;
     }
-	
-	
+
+
     /* Base styles
     -------------------------------------------------- */
 
@@ -473,9 +636,9 @@ px      68    160    252    */
     }
 
     h2 {
-        text-align: center; 
+        text-align: center;
     }
-    
+
     #wake_time_chooser {
         height: 50px;
     }
@@ -494,15 +657,15 @@ px      68    160    252    */
       top: 0;
       right: 0;
       bottom: 0;
-      left: 0;  
+      left: 0;
       overflow: auto;
     */
 
       background: #fff;
       -webkit-transition-property: top, bottom;
               transition-property: top, bottom;
-      -webkit-transition-duration: .2s, .2s;  
-              transition-duration: .2s, .2s;  
+      -webkit-transition-duration: .2s, .2s;
+              transition-duration: .2s, .2s;
       -webkit-transition-timing-function: linear, linear;
               transition-timing-function: linear, linear;
       -webkit-overflow-scrolling: touch;
@@ -1537,7 +1700,7 @@ px      68    160    252    */
     .slider > ul > li {
       display: inline-block;
       vertical-align: top; /* Ensure that li always aligns to top */
-      width: 100%; 
+      width: 100%;
       height: 100%;
     }
 
@@ -1641,7 +1804,7 @@ px      68    160    252    */
 
 
 
-	
+
 }
 
 
@@ -1655,11 +1818,11 @@ cols    1     2      3      4      5
 px      68    160    252    344    436    */
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-	
+
 	body {
 //		width: 436px;
 //		padding: 24px 22px 48px;
 	}
-	
+
 }
 

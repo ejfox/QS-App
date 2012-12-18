@@ -10,7 +10,7 @@
     <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    
+
     <!-- Set a shorter title for iOS6 devices when saved to home screen -->
     <meta name="apple-mobile-web-app-title" content="Ratchet">
 
@@ -31,83 +31,96 @@
           color: #555;
         }
     </style>
-    
+
     <!-- Bring in jQuery first, lots of other stuff depends on it -->
-	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>	
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
 
 	<!-- And underscore | http://documentcloud.github.com/underscore/	-->
-	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>	
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>
 
 	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference 	-->
-	
-	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script> 		
 
-	<script src="js/moment.js" type="text/javascript" charset="utf-8"></script> 		
-	
+	<script src="js/d3.v2.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/moment.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="js/jquery.URI.js" type="text/javascript" charset="utf-8"></script>
+
 <!--	<script src="js/retina.js" type="text/javascript" charset="utf-8"></script> -->
-	
+
 
   </head>
   <body>
 
   <!-- Make sure all your bars are the first things in your <body> -->
   <header class="bar-title">
+  <a href="#" class="button" id="time-switch">Day</a>
+
       <h1 class="title">{{ title }}</h1>
-      
-      <a class="button submit-quantify done-button" href="#">
+
+    <a class="button submit-quantify done-button" href="#">
           Done
-        </a>
+    </a>
   </header>
 
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content">
-    <div class="content-padded">
+    <!-- <div class="content-padded">
       <p class="welcome"><h2>Today's date!</h2>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
+    -->
 
     <form id="qs-form" action="/newevent" method="get" accept-charset="utf-8">
+    <input type="hidden" name="user" value="user2" id="user">
+
     <ul class="list">
-    <li class="list-divider"><h4>Morning</h4></li>    
+    <section id="morning">
+    <li class="list-divider"><h4>Morning</h4></li>
     <li>
         <h2><label for="wake_time">Wake Time</label></h2>
         <!-- <input type="text" name="wake_time" value="" id="wake_time"> -->
-        <input type="hidden" name="waketime" value="" id="waketime">
+        <input type="hidden" name="waketime" id="waketime">
         <input id="wake_time_chooser" type="time" form="wake_time" class="small-input" onchange="$('#waketime').val($(this).val())">
+        <div id="preset-times">
+            <button id="time-now">Now</button> <button id="time-5m">5m ago</button> <button id="time-20m">20m ago</button>
+        </div>
     </li>
 
     <li>
         <h2><label for="am-mood">Morning Mood</label></h2>
         <input class="small-input" type="text" name="am-mood" value="" id="am-mood">
-        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="am-mood" /></div>
     </li>
 
 
     <li class="component-example component-example-fullbleed">
         <h2><label for="am-restedness">Restedness</label></h2>
-        
-        <input class="small-input" type="text" name="am-restedness" value="" id="am-restedness">
-        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>    
 
-        
+        <input class="small-input" type="text" name="am-restedness" value="" id="am-restedness">
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="am-restedness" /></div>
+
+
     </li>
 
     <li>
         <h2><label for="optimism">Optimism</label></h2>
         <input class="small-input" type="text" name="optimism" value="" id="optimism">
-        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>        
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="optimism"/></div>
     </li>
-    
-    <li class="list-divider"><h4>Evening</h4></li>    
+    </section>
 
-    <li>
+    <section id="evening">
+    <li class="list-divider"><h4>Evening</h4></li>
+
+    <li class="squaredThree">
          <h2><label>Meditated <input type="checkbox" id="meditated" name="meditated"/></label></h2>
     </li>
 
     <li>
         <h2><label>Showered <input type="checkbox" id="showered" name="showered"/></label></h2>
     </li>
-    
+
     <li>
         <h2><label>Video games <input type="checkbox" id="video-games" name="video-games"/></label></h2>
     </li>
@@ -115,12 +128,13 @@
     <li>
         <h2><label>Exercised <input type="checkbox" id="exercised" name="exercised"/></label></h2>
     </li>
-    
+
     <li>
         <h2><label for="pm-mood">Evening Mood</label></h2>
         <input class="small-input" type="text" name="pm-mood" value="" id="pm-mood">
-        <div class="number_picker"><input type="range" min="0" max="10" value="5" /></div>
+        <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="pm-mood" /></div>
     </li>
+    </section>
 
     <!--
     <li>
@@ -128,35 +142,127 @@
     <input class="small-input" type="text" name="orgasms" value="" id="orgasms">
     </li>
     -->
-    
-    
+
+
     <!--
     <li>
     <input type="submit" name="submit" value="Submit" id="submit">
     </li>
     -->
-    
-    
+
+
     </ul>
     <a class="button-block submit-quantify">Quantify!</a>
-    
+
     </form>
 
 
   </div>
 
   </body>
-  
+
 <!-- Include the compiled Ratchet JS -->
-<script src="js/ratchet.js"></script>  
-  
+<script src="js/ratchet.js"></script>
+
 <script type="text/javascript" charset="utf-8">
 
 $(document).ready(function(){
+    $("#preset-times button").on("click", function(){
+        var preset = $(this).attr('id').split("-")[1]
+        if(preset == "now") {
+            var time = moment().format("HH:mm")
+        }
+        else if(preset == "20m") {
+            var time = moment().subtract('minutes', 20).format("HH:mm")
+        }
+        else if(preset == "5m") {
+            var time = moment().subtract('minutes', 5).format("HH:mm")
+        }
+        console.log("TIME", time)
+        $("#waketime").attr('value',time)
+        $("#wake_time_chooser").attr('value',time)
+
+
+        return false;
+
+    })
+
+
+    // Make #morning and #evening views
+    // that hide unnecessary elements
+    pathname = $(location).attr('href')
+    uri = new URI(pathname)
+    query = uri.fragment();
+
+    if(query == "morning") {
+        $("#morning").show()
+        $("#evening").hide()
+        $("#time-switch").text("Night");
+
+        $("#qs-form").submit(function(){
+            var validated = true;
+            $("#qs-form #morning input[type=text]").each(function(){
+                if($(this).val().length == 0) {
+                    alert("Please fill out all the fields!");
+                    validated = false
+                    return false;
+                }
+                else { return true }
+            })
+            return validated
+        })
+    }
+    else if(query == "evening") {
+        $("#evening").show()
+        $("#morning").hide()
+        $("#time-switch").text("Day");
+
+
+        $("#qs-form").submit(function(){
+            var validated = true;
+            $("#qs-form #evening input[type=text]").each(function(){
+                if($(this).val().length == 0) {
+                    alert("Please fill out all the fields!");
+                    validated = false
+                    return false;
+                }
+                else { return true }
+            })
+            return validated
+        })
+    }
+
+    $("#time-switch").on('click', function(){
+        var timeText = $("#time-switch").text();
+
+        console.log("timeText", timeText)
+
+        if(timeText == "Night") {
+            $("#time-switch").text("Day");
+
+            $("#morning").hide();
+            $("#evening").show();
+        }
+        else if(timeText == "Day") {
+            $("#time-switch").text("Night");
+
+            window.location.href = window.location.href+"#morning"
+            $("#evening").hide();
+            $("#morning").show();
+        }
+    })
+
+    // Make ranges control input fields
+    $("input[type=range]").on('change', function(){
+        targetid = "#"+$(this).attr("data-target")
+        $(targetid).val($(this).val()).focus()
+    })
+
     $("#qs-form").prepend($('<input type="hidden" name="date" value="'+new Date().toDateString()+'" id="date">'))
-    $("#qs-form").prepend($('<input type="hidden" name="user" value="user2" id="user">'))
-    
+
 })
+
+
 $(".submit-quantify").click(function(){
     $("#qs-form").submit();
 })
