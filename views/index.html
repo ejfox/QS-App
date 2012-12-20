@@ -83,13 +83,13 @@
         <input type="hidden" name="waketime" id="waketime">
         <input id="wake_time_chooser" type="time" form="wake_time" class="small-input" onchange="$('#waketime').val($(this).val())">
         <div id="preset-times">
-            <button id="time-now">Now</button> <button id="time-5m">5m ago</button> <button id="time-20m">20m ago</button>
+            <button id="time-now" tabindex="-1">Now</button> <button style="opacity: 0.7;" id="time-5m" tabindex="-1">5m ago</button> <button id="time-20m" style="opacity: 0.4" tabindex="-1">20m ago</button>
         </div>
     </li>
 
     <li>
         <h2><label for="am-mood">Morning Mood</label></h2>
-        <input class="small-input" type="text" name="am-mood" value="" id="am-mood">
+        <input class="small-input" type="tel" name="am-mood" value="" id="am-mood">
         <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="am-mood" /></div>
     </li>
 
@@ -97,7 +97,7 @@
     <li class="component-example component-example-fullbleed">
         <h2><label for="am-restedness">Restedness</label></h2>
 
-        <input class="small-input" type="text" name="am-restedness" value="" id="am-restedness">
+        <input class="small-input" type="tel" name="am-restedness" value="" id="am-restedness">
         <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="am-restedness" /></div>
 
 
@@ -105,7 +105,7 @@
 
     <li>
         <h2><label for="optimism">Optimism</label></h2>
-        <input class="small-input" type="text" name="optimism" value="" id="optimism">
+        <input class="small-input" type="tel" name="optimism" value="" id="optimism">
         <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="optimism"/></div>
     </li>
     </section>
@@ -113,25 +113,25 @@
     <section id="evening">
     <li class="list-divider"><h4>Evening</h4></li>
 
-    <li class="squaredThree">
+    <li class="checkbox">
          <h2><label>Meditated <input type="checkbox" id="meditated" name="meditated"/></label></h2>
     </li>
 
-    <li>
+    <li class="checkbox">
         <h2><label>Showered <input type="checkbox" id="showered" name="showered"/></label></h2>
     </li>
 
-    <li>
+    <li class="checkbox">
         <h2><label>Video games <input type="checkbox" id="video-games" name="video-games"/></label></h2>
     </li>
 
-    <li>
+    <li class="checkbox">
         <h2><label>Exercised <input type="checkbox" id="exercised" name="exercised"/></label></h2>
     </li>
 
     <li>
         <h2><label for="pm-mood">Evening Mood</label></h2>
-        <input class="small-input" type="text" name="pm-mood" value="" id="pm-mood">
+        <input class="small-input" type="tel" name="pm-mood" value="" id="pm-mood">
         <div class="number_picker"><input type="range" min="0" max="10" value="5" tabindex="-1" data-target="pm-mood" /></div>
     </li>
     </section>
