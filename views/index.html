@@ -258,6 +258,12 @@ $(document).ready(function(){
         $(targetid).val($(this).val()).focus()
     })
 
+    // And vice versa
+
+    $("input[type=tel]").on('keyup', function(){
+        $("input[data-target="+$(this).attr('id')+"]").val($(this).val())
+    })
+
     $("#qs-form").prepend($('<input type="hidden" name="date" value="'+new Date().toDateString()+'" id="date">'))
 
 })
