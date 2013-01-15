@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" media="all" href=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
+	<!-- LESS framework stylesheet
+	Should be compiled from style.less
+	I use http://wearekiss.com/simpless for auto-compiling on save
+	-->
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Primary Stylesheet" charset="utf-8">
+
+	<!-- Bring in jQuery first, lots of other stuff depends on it -->
+	<script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Add Retina.js for retina support -->
+    <script src="js/retina.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- And underscore | http://documentcloud.github.com/underscore/
+	<script src="js/underscore-min.js" type="text/javascript" charset="utf-8"></script>	-->
+
+	<!-- And D3 | https://github.com/mbostock/d3/wiki/API-Reference
+	<script src="js/d3.min.js?v3" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- And Lettering.js | https://github.com/davatron5000/Lettering.js
+	<script src="js/jquery.lettering.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- And Scrollorama | http://johnpolacek.github.com/scrollorama/
+	<script src="js/jquery.scrollorama.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<!-- And Tabletop | https://github.com/jsoma/tabletop
+	<script src="js/tabletop.js" type="text/javascript" charset="utf-8"></script> -->
+
+	<link href="http://fonts.googleapis.com/css?family=Average" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="container">
+	<header id="title">
+		<h1>Quantify Yourself</h1>
+	</header>
+
+	<section id="content">
+	<p><strong>With the least amount of effort possible, I want to help people learn about themselves and their habits.</strong></p>
+	<p>By consistently keeping track of a set of metrics related to happiness, a user can determine how different life changes affect how happy they are. </p>
+
+
+
+	<h3>Daily Check-ins</h3>
+	<p>Two quick daily check-ins in the morning and evening where the user fills out simple 1&#8211;10 ratings of various metrics (<strong>mood, optimism, restedness</strong>) help establish how the day impacted a user’s a mood by comparing their <strong>AM mood</strong> rating to their <strong>PM mood</strong> rating. These ratings are averaged and compared day-over-day in beautiful visualizations, rewarding consistent updates. Check-ins can be made either threw the mobile app, or through a desktop web interface.</p>
+
+	<img src="qs_mockup2.png" />
+
+
+	<p>Once a baseline of mood/happiness is established, a user can input habits that they wish to create or stop. These habits get added to a user’s PM check-in. <em class="quote">“What is your evening mood? Did you meditate today? Did you get inbox zero today?”</em>.
+	</p>
+
+	<p>Using that data a user can check whether habits increase their happiness. This creates a positive reinforcement and helps a user better understand what habits make them happier so they can do more of that. </p>
+
+	<img src="qys_metric_compare.png" />
+
+
+	<h3>Simple interface</h3>
+	<p>The interface is as simple, minimal, and rewarding as possible. A user should be able to quickly enter their metrics in the time after they read their email in bed immediately after waking up, or in the evening as they wait for the water to boil while making dinner. A user can schedule reminders for their AM and PM check-ins, and the system eventually learns to adapt these reminder times to the average time a user performs each check-in.</p>
+
+	<h3>Desktop interface</h3>
+	<p>The mobile app connects to a desktop web interface, where a user can see more advanced reports based on the metrics they collect about themselves. The data collected by the app will be made available in an easily-usable API, with code examples on GitHub, so that developer users are encouraged to perform their own analysis and visualization. </p>
+
+	<h3>External services</h3>
+	<p>The web interface should eventually also allow a user to import metrics from other services to compare them to the happiness metrics the app collects. A user should be able to input their data from Twitter, Fitbit, RescueTime, Pocket, OpenDNS, Reddit, Wunderlist, and any other possible data source. From there a user can compare diverse metrics to their happiness baseline and come up with insights like <em class="quote">“My happiness increases 10% when I get a retweet on Twitter”</em>, <em class="quote">“When my happiness is above 7 I tweet twice as much”</em>, <em class="quote">“When I walk over 50,000 steps my happiness decreases 25%, but my restedness the next day increases 50%”</em>, <em class="quote">“When my restedness is over 6, I get an average of 8 to-do items done per day”</em>.</p>
+
+	</section>
+
+	<section id="interested">
+		<!-- Begin MailChimp Signup Form -->
+	<div id="mc_embed_signup">
+		<form action="http://mainstem.us6.list-manage.com/subscribe/post?u=79a7a735a2f2c37ea354458ed&amp;id=bdff4fbcd2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			<label for="mce-EMAIL">Want to stay updated on Quantify Yourself?</label>
+			<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+			<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+		</form>
+	</div>
+	<!--End mc_embed_signup-->
+
+		<h5><a href="http://quantifyyourself.tumblr.com/">Quantify Yourself Devblog on Tumblr</a></h5>
+	</section>
+
+</div>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+/*
+
+function init() {
+  Tabletop.init( { key: '0AmYzu_s7QHsmdDNZUzRlYldnWTZCLXdrMXlYQzVxSFE',
+                   callback: function(data, tabletop) {
+						console.log(data)
+					},
+                   simpleSheet: true
+				} )
+}
+
+init();
+
+*/
+});
+</script>
+
+<!--
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
+
+</body>
+</html>
