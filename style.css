@@ -252,6 +252,9 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+h1 {
+  text-align: center;
+}
 h1,
 h2,
 h3,
@@ -300,6 +303,9 @@ img {
 }
 #interested {
   text-align: center;
+}
+#interested #devblog {
+  margin-top: 2.5em;
 }
 /*		Tablet Layout: 768px.
 		Gutters: 24px.
